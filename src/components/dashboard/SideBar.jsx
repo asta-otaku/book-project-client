@@ -34,7 +34,7 @@ function SideBar({ name }) {
       className="md:h-screen"
     >
       <Toaster />
-      <Sidebar.Logo>
+      <Sidebar.Logo href="/">
         <p>{name}</p>
       </Sidebar.Logo>
       <Sidebar.Items>
