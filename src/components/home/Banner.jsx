@@ -1,9 +1,13 @@
 import BannerCard from "./BannerCard";
 import React from "react";
+import cover from "./cover.jpg";
 
 function Banner({ setSearch }) {
   return (
-    <div className="bg-[url(./cover.jpg)] bg-cover bg-center bg-no-repeat w-full">
+    <div
+      style={{ backgroundImage: `url(${cover})` }}
+      className="bg-cover bg-center bg-no-repeat w-full"
+    >
       <div className="bg-[#150100c2] h-full text-white px-4 py-32">
         <div className="flex flex-col md:flex-row justify-between gap-20 items-center max-w-6xl mx-auto w-full">
           <div className="flex w-full flex-col md:flex-row justify-between items-center gap-12">

@@ -6,23 +6,6 @@ import axios from "axios";
 import { CONSTANT } from "../util";
 
 function Login() {
-  useEffect(() => {
-    const getUser = async () => {
-      try {
-        const res = await axios.get(`${CONSTANT.BASE_URL}/users/user-info`, {
-          withCredentials: true,
-        });
-        if (res.status === 200) {
-          console.log(res.data);
-          window.location.href = "/admin/dashboard";
-        }
-      } catch (error) {
-        console.log(error);
-      }
-    };
-    getUser();
-  }, []);
-
   const [loading, setLoading] = useState(false);
 
   const handleLogIn = async (e) => {
