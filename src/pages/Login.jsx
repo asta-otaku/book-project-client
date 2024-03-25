@@ -12,10 +12,10 @@ function Login() {
         const res = await axios.get(`${CONSTANT.BASE_URL}/users/user-info`, {
           withCredentials: true,
         });
-        // if (res.status === 200) {
-        //   console.log(res.data);
-        //   window.location.href = "/admin/dashboard";
-        // }
+        if (res.status === 200) {
+          console.log(res.data);
+          window.location.href = "/admin/dashboard";
+        }
       } catch (error) {
         console.log(error);
       }
@@ -50,9 +50,9 @@ function Login() {
       );
       if (res.status == 200) {
         toast.success("Login successfully");
-        // setTimeout(() => {
-        //   window.location.href = "/admin/dashboard";
-        // }, 2000);
+        setTimeout(() => {
+          window.location.href = "/admin/dashboard";
+        }, 2000);
       } else {
         toast.error("Failed to login");
       }
