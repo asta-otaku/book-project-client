@@ -27,7 +27,7 @@ function Navbar() {
   return (
     <header className="w-full bg-transparent fixed left-0 right-0 transition-all ease-in duration-300">
       <nav
-        className={`p-4 bg-primary text-white ${
+        className={`py-4 px-2 bg-primary text-white ${
           isSticky ? "sticky top-0 left-0 right-0" : ""
         }`}
       >
@@ -60,9 +60,12 @@ function Navbar() {
               className="text-primary focus:outline-none"
             >
               {isMenuOpen ? (
-                <FaXmark className="w-5 h-5 text-primary" />
+                <FaXmark color="white" className="w-5 h-5 text-primary" />
               ) : (
-                <FaBarsStaggered className="w-5 h-5 text-primary" />
+                <FaBarsStaggered
+                  color="white"
+                  className="w-5 h-5 text-primary"
+                />
               )}
             </button>
           </div>
