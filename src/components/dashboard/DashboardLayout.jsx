@@ -15,9 +15,6 @@ function DashboardLayout() {
         const { name } = res.data.userInfo;
         setName(name);
       } catch (error) {
-        if (error.response.status === 403) {
-          window.location.href = "/login";
-        }
         console.log(error);
       }
     };
