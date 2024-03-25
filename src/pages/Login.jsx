@@ -12,10 +12,10 @@ function Login() {
         const res = await axios.get(`${CONSTANT.BASE_URL}/users/user-info`, {
           withCredentials: true,
         });
-        if (res.status === 200) {
-          console.log(res.data);
-          window.location.href = "/admin/dashboard";
-        }
+        // if (res.status === 200) {
+        //   console.log(res.data);
+        //   window.location.href = "/admin/dashboard";
+        // }
       } catch (error) {
         console.log(error);
       }
