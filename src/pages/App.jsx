@@ -29,6 +29,9 @@ function App() {
           .slice(0, 8)}
         headline="Best Seller Books"
       />
+      <div className="bg-primary text-white py-4">
+        <p className="text-center">@Rasheed Fatai - University of Sunderland</p>
+      </div>
     </>
   );
 }

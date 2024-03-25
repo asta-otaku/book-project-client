@@ -16,6 +16,7 @@ import Verification from "./pages/Verification.jsx";
 import ForgotPassword from "./pages/ForgotPassword.jsx";
 import Success from "./pages/Success.jsx";
 import Cancel from "./pages/Cancel.jsx";
+import NotFound from "./pages/404.jsx";
 
 const router = createBrowserRouter([
   {
@@ -80,6 +81,10 @@ const router = createBrowserRouter([
   {
     path: "/forgot-password",
     element: <ForgotPassword />,
+  },
+  {
+    path: "*",
+    element: <NotFound />,
   },
 ]);
 

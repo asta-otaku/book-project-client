@@ -13,6 +13,9 @@ function ForgotPassword() {
     confirmPassword: "",
     step: 1,
   });
+  const regex =
+    /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[#$@!%&*?])[A-Za-z\d#$@!%&*?]{8,30}$/;
+
   const [loading, setLoading] = useState(false);
   const handleForgotPassword = async (e) => {
     e.preventDefault();
@@ -44,12 +47,18 @@ function ForgotPassword() {
       return toast.error("Please fill all fields");
     }
 
-    if (formData.password.length < 6) {
+    if (formData.password.length < 8) {
       return toast.error("Password must be at least 6 characters");
     }
 
     if (formData.password !== formData.confirmPassword) {
       return toast.error("Passwords do not match");
+    }
+
+    if (!regex.test(formValues.password)) {
+      return toast.error(
+        "Password must contain at least one uppercase letter, one lowercase letter, one number and one special character"
+      );
     }
 
     setLoading(true);

@@ -8,6 +8,8 @@ import { CONSTANT } from "../util";
 function Signup() {
   const [formValues, setFormValues] = useState({});
   const [loading, setLoading] = useState(false);
+  const regex =
+    /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[#$@!%&*?])[A-Za-z\d#$@!%&*?]{8,30}$/;
 
   const handleChange = (e) => {
     e.preventDefault();
@@ -21,12 +23,23 @@ function Signup() {
   const handleSignUp = async (e) => {
     e.preventDefault();
 
-    if (!formValues.email || !formValues.password || !formValues.name) {
+    if (
+      !formValues.email ||
+      !formValues.password ||
+      !formValues.name ||
+      !formValues.phoneNumber
+    ) {
       return toast.error("Please fill all fields");
     }
 
-    if (formValues.password.length < 6) {
-      return toast.error("Password must be at least 6 characters");
+    if (formValues.password.length < 8) {
+      return toast.error("Password must be at least 8 characters");
+    }
+
+    if (!regex.test(formValues.password)) {
+      return toast.error(
+        "Password must contain at least one uppercase letter, one lowercase letter, one number and one special character"
+      );
     }
 
     setLoading(true);

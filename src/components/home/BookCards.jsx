@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React from "react";
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
 
@@ -9,7 +9,6 @@ import "swiper/css/pagination";
 // import required modules
 import { Pagination } from "swiper/modules";
 import { Link } from "react-router-dom";
-import { FaCartShopping } from "react-icons/fa6";
 
 function BookCards({ books, headline }) {
   return (
@@ -43,26 +42,32 @@ function BookCards({ books, headline }) {
             modules={[Pagination]}
             className="mySwiper h-full w-full"
           >
-            {books.map((book) => (
-              <SwiperSlide key={book._id} className="hover:scale-[101%]">
-                <Link to={`/book/${book._id}`}>
-                  <div>
-                    <img
-                      src={book.imageURL}
-                      alt=""
-                      className="md:w-[300px] md:h-[340px]"
-                    />
-                  </div>
-                  <div className="text-sm text-primary font-medium mb-12">
-                    <h3 className="mb-2">{book.title}</h3>
-                    <div className="flex flex-wrap justify-between gap-2">
-                      <p>{book.authorName}</p>
-                      <p>ISBN: {book.ISBN}</p>
+            {books.length > 0 ? (
+              books.map((book) => (
+                <SwiperSlide key={book._id} className="hover:scale-[101%]">
+                  <Link to={`/book/${book._id}`}>
+                    <div>
+                      <img
+                        src={book.imageURL}
+                        alt=""
+                        className="md:w-[300px] md:h-[340px]"
+                      />
                     </div>
-                  </div>
-                </Link>
-              </SwiperSlide>
-            ))}
+                    <div className="text-sm text-primary font-medium mb-12">
+                      <h3 className="mb-2">{book.title}</h3>
+                      <div className="flex flex-wrap justify-between gap-2">
+                        <p>{book.authorName}</p>
+                        <p>ISBN: {book.ISBN}</p>
+                      </div>
+                    </div>
+                  </Link>
+                </SwiperSlide>
+              ))
+            ) : (
+              <p className="text-3xl text-center text-primary font-bold">
+                Not in stock
+              </p>
+            )}
           </Swiper>
         </div>
       </div>

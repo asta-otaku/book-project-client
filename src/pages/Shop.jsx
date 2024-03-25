@@ -72,6 +72,7 @@ function Shop() {
       </div>
     );
   }
+  const email = "afolabiibrahim08@gmail.com";
 
   return (
     <>
@@ -102,10 +103,10 @@ function Shop() {
               </button>
               <Link
                 target="_blank"
-                to="mailto:afolabiibrahim08@gmail.com?subject=Donation of a copy of a book&body=I would like to donate a copy of a book."
+                to={`mailto:${email}.com?subject=Request for a copy of ${book.title}&body=Hello, I would like to request for a copy of ${book.title}. Thank you.`}
                 className="bg-white text-primary hover:bg-primary hover:text-white border border-solid border-primary font-semibold text-center py-2 rounded mt-1"
               >
-                Donate a copy
+                Request for a copy
               </Link>
             </Card>
           ))}
@@ -122,6 +123,9 @@ function Shop() {
           containerClassName="flex justify-center items-center font-medium mt-12 gap-5"
           activeClassName="bg-primary border border-primary text-white"
         />
+      </div>
+      <div className="bg-primary text-white py-4">
+        <p className="text-center">@Rasheed Fatai - University of Sunderland</p>
       </div>
     </>
   );
