@@ -50,9 +50,9 @@ function Login() {
       );
       if (res.status == 200) {
         toast.success("Login successfully");
-        setTimeout(() => {
-          window.location.href = "/admin/dashboard";
-        }, 2000);
+        // setTimeout(() => {
+        //   window.location.href = "/admin/dashboard";
+        // }, 2000);
       } else {
         toast.error("Failed to login");
       }
