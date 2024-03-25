@@ -33,13 +33,6 @@ function SingleBook() {
               >
                 Read Book
               </Link>
-              <Link
-                to={`https://wa.me/2348161539528?text=${encodeURI(`
-                I want to buy ${title}`)}`}
-                className="bg-primary text-white font-semibold text-center py-2 px-5 rounded"
-              >
-                Buy Now
-              </Link>
             </div>
           </div>
         </div>
