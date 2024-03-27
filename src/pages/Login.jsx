@@ -4,9 +4,11 @@ import { Spinner } from "flowbite-react";
 import toast, { Toaster } from "react-hot-toast";
 import axios from "axios";
 import { CONSTANT } from "../util";
+import { EyeIcon, EyeSlashIcon } from "../assets/icon";
 
 function Login() {
   const [loading, setLoading] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
 
   const handleLogIn = async (e) => {
     e.preventDefault();
@@ -66,14 +68,24 @@ function Login() {
                       placeholder="Email address"
                     />
                   </div>
-                  <div className="relative">
+                  <div className="relative flex justify-between w-full">
                     <input
                       id="password"
                       name="password"
-                      type="text"
+                      type={showPassword ? "text" : "password"}
                       className="peer h-10 w-full border-b-2 border-gray-300 text-gray-900 focus:outline-none focus:borer-rose-600"
                       placeholder="Password"
                     />
+                    <button
+                      type="button"
+                      onClick={() => setShowPassword(!showPassword)}
+                    >
+                      {showPassword ? (
+                        <EyeSlashIcon className="w-5" />
+                      ) : (
+                        <EyeIcon className="w-5" />
+                      )}
+                    </button>
                   </div>
                   <div className="flex flex-wrap gap-2 justify-center md:justify-between w-full my-2">
                     <p className="text-xs">

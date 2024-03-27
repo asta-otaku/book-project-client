@@ -4,6 +4,7 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import toast, { Toaster } from "react-hot-toast";
 import { CONSTANT } from "../util";
+import { EyeIcon, EyeSlashIcon } from "../assets/icon";
 
 function ForgotPassword() {
   const [formData, setFormData] = useState({
@@ -13,6 +14,7 @@ function ForgotPassword() {
     confirmPassword: "",
     step: 1,
   });
+  const [showPassword, setShowPassword] = useState(false);
   const regex =
     /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[#$@!%&*?])[A-Za-z\d#$@!%&*?]{8,30}$/;
 
@@ -178,22 +180,32 @@ function ForgotPassword() {
                             placeholder="OTP"
                           />
                         </div>
-                        <div className="relative">
+                        <div className="relative flex justify-between w-full">
                           <input
-                            type="text"
                             onChange={(e) =>
                               setFormData({
                                 ...formData,
                                 password: e.target.value,
                               })
                             }
+                            type={showPassword ? "text" : "password"}
                             className="peer h-10 w-full border-b-2 border-gray-300 text-gray-900 focus:outline-none focus:borer-rose-600"
                             placeholder="Password"
                           />
+                          <button
+                            type="button"
+                            onClick={() => setShowPassword(!showPassword)}
+                          >
+                            {showPassword ? (
+                              <EyeSlashIcon className="w-5" />
+                            ) : (
+                              <EyeIcon className="w-5" />
+                            )}
+                          </button>
                         </div>
-                        <div className="relative">
+                        <div className="relative flex justify-between w-full">
                           <input
-                            type="text"
+                            type={showPassword ? "text" : "password"}
                             onChange={(e) =>
                               setFormData({
                                 ...formData,
@@ -203,6 +215,16 @@ function ForgotPassword() {
                             className="peer h-10 w-full border-b-2 border-gray-300 text-gray-900 focus:outline-none focus:borer-rose-600"
                             placeholder="Confirm Password"
                           />
+                          <button
+                            type="button"
+                            onClick={() => setShowPassword(!showPassword)}
+                          >
+                            {showPassword ? (
+                              <EyeSlashIcon className="w-5" />
+                            ) : (
+                              <EyeIcon className="w-5" />
+                            )}
+                          </button>
                         </div>
                         <div className="relative">
                           <button

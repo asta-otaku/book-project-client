@@ -4,10 +4,12 @@ import axios from "axios";
 import toast, { Toaster } from "react-hot-toast";
 import { Spinner } from "flowbite-react";
 import { CONSTANT } from "../util";
+import { EyeIcon, EyeSlashIcon } from "../assets/icon";
 
 function Signup() {
   const [formValues, setFormValues] = useState({});
   const [loading, setLoading] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
   const regex =
     /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[#$@!%&*?])[A-Za-z\d#$@!%&*?]{8,30}$/;
 
@@ -103,14 +105,25 @@ function Signup() {
                       placeholder="Phone Number"
                     />
                   </div>
-                  <div className="relative">
+                  <div className="relative flex justify-between w-full">
                     <input
-                      onChange={handleChange}
+                      id="password"
                       name="password"
-                      type="text"
+                      onChange={handleChange}
+                      type={showPassword ? "text" : "password"}
                       className="peer h-10 w-full border-b-2 border-gray-300 text-gray-900 focus:outline-none focus:borer-rose-600"
                       placeholder="Password"
                     />
+                    <button
+                      type="button"
+                      onClick={() => setShowPassword(!showPassword)}
+                    >
+                      {showPassword ? (
+                        <EyeSlashIcon className="w-5" />
+                      ) : (
+                        <EyeIcon className="w-5" />
+                      )}
+                    </button>
                   </div>
                   <p className="text-xs my-2">
                     If you have an account, Please{" "}
