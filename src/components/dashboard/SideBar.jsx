@@ -8,24 +8,27 @@ import {
 } from "react-icons/hi";
 
 import toast, { Toaster } from "react-hot-toast";
-import axios from "axios";
-import { CONSTANT } from "../../util";
+// import axios from "axios";
+// import { CONSTANT } from "../../util";
 
 function SideBar({ name }) {
   const handleLogout = async () => {
-    try {
-      const res = await axios.post(`${CONSTANT.BASE_URL}/users/logout`);
-      if (res.status === 200) {
-        toast.success("Sign out Successfully");
-        localStorage.removeItem("token");
-        window.location.href = "/login";
-      } else {
-        toast.error("Failed to sign out");
-      }
-    } catch (error) {
-      console.log(error);
-      toast.error("Failed to sign out");
-    }
+    localStorage.removeItem("token");
+    toast.success("Sign out Successfully");
+    setTimeout(() => window.location.reload(), 2000);
+    // try {
+    //   const res = await axios.post(`${CONSTANT.BASE_URL}/users/logout`);
+    //   if (res.status === 200) {
+    //     toast.success("Sign out Successfully");
+    //     localStorage.removeItem("token");
+    //     window.location.href = "/login";
+    //   } else {
+    //     toast.error("Failed to sign out");
+    //   }
+    // } catch (error) {
+    //   console.log(error);
+    //   toast.error("Failed to sign out");
+    // }
   };
   return (
     <Sidebar
