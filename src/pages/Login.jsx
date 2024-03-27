@@ -21,18 +21,13 @@ function Login() {
 
     setLoading(true);
     try {
-      const res = await axios.post(
-        `${CONSTANT.BASE_URL}/users/login`,
-        {
-          email,
-          password,
-        },
-        {
-          withCredentials: true,
-        }
-      );
+      const res = await axios.post(`${CONSTANT.BASE_URL}/users/login`, {
+        username: email,
+        password,
+      });
       if (res.status == 200) {
         toast.success("Login successfully");
+        localStorage.setItem("token", res?.data?.message);
         setTimeout(() => {
           window.location.href = "/admin/dashboard";
         }, 2000);
@@ -40,8 +35,8 @@ function Login() {
         toast.error("Failed to login");
       }
     } catch (error) {
-      toast.error("Failed to login");
-      console.log(error);
+      toast.error(error.response.data.Message);
+      setLoading(false);
     }
     setLoading(false);
   };
@@ -75,7 +70,7 @@ function Login() {
                     <input
                       id="password"
                       name="password"
-                      type="password"
+                      type="text"
                       className="peer h-10 w-full border-b-2 border-gray-300 text-gray-900 focus:outline-none focus:borer-rose-600"
                       placeholder="Password"
                     />

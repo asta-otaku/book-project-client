@@ -86,6 +86,7 @@ function EditBooks() {
 
   const handleUpdate = async (e) => {
     e.preventDefault();
+    const token = localStorage.getItem("token");
     const form = e.target;
     const title = form.title.value;
     const authorName = form.authorName.value;
@@ -113,7 +114,9 @@ function EditBooks() {
           ...bookData,
         },
         {
-          withCredentials: true,
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
         }
       );
       if (res.status === 200) {

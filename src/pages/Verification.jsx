@@ -26,7 +26,7 @@ function Verification() {
         window.location.href = "/login";
       }
     } catch (error) {
-      toast.error(error.message);
+      toast.error(error.response.data.Message);
     }
     setLoading(false);
   };

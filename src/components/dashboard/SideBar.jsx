@@ -9,7 +9,6 @@ import {
 
 import toast, { Toaster } from "react-hot-toast";
 import axios from "axios";
-import Cookies from "js-cookie";
 import { CONSTANT } from "../../util";
 
 function SideBar({ name }) {
@@ -17,8 +16,8 @@ function SideBar({ name }) {
     try {
       const res = await axios.post(`${CONSTANT.BASE_URL}/users/logout`);
       if (res.status === 200) {
-        Cookies.remove("connect.sid");
         toast.success("Sign out Successfully");
+        localStorage.removeItem("token");
         window.location.href = "/login";
       } else {
         toast.error("Failed to sign out");

@@ -55,7 +55,7 @@ function ForgotPassword() {
       return toast.error("Passwords do not match");
     }
 
-    if (!regex.test(formValues.password)) {
+    if (!regex.test(formData.password)) {
       return toast.error(
         "Password must contain at least one uppercase letter, one lowercase letter, one number and one special character"
       );
@@ -73,7 +73,9 @@ function ForgotPassword() {
       );
       if (res.status === 200) {
         toast.success("Password reset successfully");
-        window.location.href = "/login";
+        setTimeout(() => {
+          window.location.href = "/login";
+        }, 2000);
       }
     } catch (error) {
       toast.error(error.message);
@@ -127,7 +129,7 @@ function ForgotPassword() {
                             disabled={loading}
                             className="bg-blue-500 text-white rounded-md px-6 py-2"
                           >
-                            {loading ? <Spinner /> : "Log in"}
+                            {loading ? <Spinner /> : "Send OTP"}
                           </button>
                         </div>
                       </form>
@@ -207,7 +209,7 @@ function ForgotPassword() {
                             disabled={loading}
                             className="bg-blue-500 text-white rounded-md px-6 py-2"
                           >
-                            {loading ? <Spinner /> : "Log in"}
+                            {loading ? <Spinner /> : "Reset Password"}
                           </button>
                         </div>
                       </form>

@@ -88,6 +88,7 @@ function UploadBook() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    const token = localStorage.getItem("token");
     const form = e.target;
     const title = form.title.value;
     const authorName = form.authorName.value;
@@ -113,7 +114,9 @@ function UploadBook() {
         `${CONSTANT.BASE_URL}/upload-book`,
         bookData,
         {
-          withCredentials: false,
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
         }
       );
       if (res.status === 200) {

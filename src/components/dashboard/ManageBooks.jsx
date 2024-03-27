@@ -33,9 +33,12 @@ function ManageBooks() {
   );
 
   const handleDelete = async (id) => {
+    const token = localStorage.getItem("token");
     try {
       const res = await axios.delete(`${CONSTANT.BASE_URL}/delete-book/${id}`, {
-        withCredentials: true,
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
       });
       if (res.status === 200) {
         toast.success("Book deleted successfully");
