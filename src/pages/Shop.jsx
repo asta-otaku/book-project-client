@@ -72,7 +72,7 @@ function Shop() {
       </div>
     );
   }
-  const email = "afolabiibrahim08@gmail.com";
+  const email = "fatairasheed829@gmail.com";
 
   return (
     <>

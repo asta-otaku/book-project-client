@@ -8,7 +8,7 @@ function Contact() {
     const subject = e.target[1].value;
     const message = e.target[2].value;
     window.open(
-      `mailto:afolabiibrahim08@gmail.com?subject=${subject}&body=${message}`
+      `mailto:fatairasheed829@gmail.com?subject=${subject}&body=${message}`
     );
   };
   return (
