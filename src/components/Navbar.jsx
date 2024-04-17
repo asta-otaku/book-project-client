@@ -21,7 +21,7 @@ function Navbar() {
   const navItems = [
     { name: "Home", link: "/" },
     { name: "Shop", link: "/shop" },
-    { name: "Sign in", link: "/admin/dashboard" },
+    // { name: "Sign in", link: "/admin/dashboard" },
     { name: "Contact us", link: "/contact" },
   ];
 
