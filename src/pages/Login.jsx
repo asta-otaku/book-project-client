@@ -30,6 +30,7 @@ function Login() {
       if (res.status == 200) {
         toast.success("Login successfully");
         localStorage.setItem("token", res?.data?.message);
+        localStorage.setItem("loggingID", res?.data?.loggingID);
         setTimeout(() => {
           window.location.href = "/admin/dashboard";
         }, 2000);

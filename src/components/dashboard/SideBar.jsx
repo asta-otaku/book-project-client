@@ -3,13 +3,26 @@ import { Sidebar } from "flowbite-react";
 import { HiChartPie, HiOutlineCloudUpload, HiTable } from "react-icons/hi";
 
 import toast, { Toaster } from "react-hot-toast";
+import { CONSTANT } from "../../util";
+import axios from "axios";
 
-function SideBar({ name }) {
+function SideBar({ user }) {
+  const { name, _id } = user;
+
   const handleLogout = async () => {
-    localStorage.removeItem("token");
-    toast.success("Sign out Successfully");
-    setTimeout(() => window.location.reload(), 2000);
+    const loggingID = localStorage.getItem("loggingID");
+    const res = await axios.put(
+      `${CONSTANT.BASE_URL}/users/logout/${loggingID}`
+    );
+    console.log("res", res);
+    if (res.data.success) {
+      localStorage.removeItem("token");
+      localStorage.removeItem("loggingID");
+      toast.success("Signed out Successfully");
+      setTimeout(() => window.location.reload(), 1000);
+    }
   };
+
   return (
     <Sidebar
       aria-label="Sidebar with content separator example"

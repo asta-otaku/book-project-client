@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
 function DashboardLayout() {
-  const [name, setName] = useState(null);
+  const [user, setUser] = useState({});
   const navigate = useNavigate();
   useEffect(() => {
     const token = localStorage.getItem("token");
@@ -20,8 +20,7 @@ function DashboardLayout() {
             Authorization: `Bearer ${token}`,
           },
         });
-        const { name } = res.data.data.user;
-        setName(name);
+        setUser(res.data.data.user);
       } catch (error) {
         if (error.response.status === 403) {
           navigate("/login", { replace: true });
@@ -33,7 +32,7 @@ function DashboardLayout() {
   }, []);
   return (
     <div className="flex gap-4 flex-col md:flex-row max-w-screen-2xl mx-auto">
-      <SideBar name={name} />
+      <SideBar user={user} />
       <Outlet />
     </div>
   );
