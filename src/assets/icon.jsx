@@ -1,7 +1,6 @@
 export function EyeSlashIcon(props) {
   return (
     <svg
-      dataSlot="icon"
       fill="none"
       strokeWidth={1.5}
       stroke="currentColor"
@@ -22,7 +21,6 @@ export function EyeSlashIcon(props) {
 export function EyeIcon(props) {
   return (
     <svg
-      dataSlot="icon"
       fill="none"
       strokeWidth={1.5}
       stroke="currentColor"

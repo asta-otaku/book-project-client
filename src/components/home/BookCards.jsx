@@ -7,7 +7,7 @@ import "swiper/css";
 import "swiper/css/pagination";
 
 // import required modules
-import { Pagination } from "swiper/modules";
+import { Pagination, Autoplay, Navigation } from "swiper/modules";
 import { Link } from "react-router-dom";
 
 function BookCards({ books, headline }) {
@@ -22,6 +22,10 @@ function BookCards({ books, headline }) {
           <Swiper
             slidesPerView={1}
             spaceBetween={10}
+            autoplay={{
+              delay: 2500,
+              disableOnInteraction: false,
+            }}
             pagination={{
               clickable: true,
             }}
@@ -39,7 +43,8 @@ function BookCards({ books, headline }) {
                 spaceBetween: 50,
               },
             }}
-            modules={[Pagination]}
+            navigation={true}
+            modules={[Autoplay, Pagination, Navigation]}
             className="mySwiper h-full w-full"
           >
             {books.length > 0 ? (

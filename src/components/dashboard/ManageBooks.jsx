@@ -62,7 +62,7 @@ function ManageBooks() {
       <h1 className="mb-8 text-3xl font-bold">Manage Your Books</h1>
 
       <div className="overflow-x-auto">
-        <Table>
+        <Table className="w-full md:min-w-[calc(70vw)]">
           <Table.Head>
             <Table.HeadCell>No.</Table.HeadCell>
             <Table.HeadCell>Name</Table.HeadCell>
@@ -75,7 +75,9 @@ function ManageBooks() {
           {displayedData?.map((book, index) => (
             <Table.Body key={book._id} className="divide-y">
               <Table.Row>
-                <Table.Cell>{index + 1}</Table.Cell>
+                <Table.Cell>
+                  {currentPage * itemsPerPage + index + 1}
+                </Table.Cell>
                 <Table.Cell>{book.title}</Table.Cell>
                 <Table.Cell>{book.authorName}</Table.Cell>
                 <Table.Cell>{book.category}</Table.Cell>

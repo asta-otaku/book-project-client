@@ -52,6 +52,19 @@ nav {
   background-image: url("/src/assets/banner-books/book5.png");
 }
 
+/* .slide {
+  animation: scroll 40s linear infinite;
+}
+
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+} */
+
 /* Stripe Elements Styles */
 /* form */
 form.stripe-form {
