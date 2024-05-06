@@ -10,6 +10,8 @@ function Login() {
   const [loading, setLoading] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
 
+  const [loginAttempts, setLoginAttempts] = useState(0);
+
   const handleLogIn = async (e) => {
     e.preventDefault();
     const form = e.target;
@@ -22,6 +24,16 @@ function Login() {
     }
 
     setLoading(true);
+
+    const confirmAcctSuspension = sessionStorage.getItem(
+      `acct-${email}`.toLowerCase()
+    );
+    if (confirmAcctSuspension) {
+      toast.error("Your account has been suspended. Please contact support.");
+      setLoading(false);
+      return;
+    }
+
     try {
       const res = await axios.post(`${CONSTANT.BASE_URL}/users/login`, {
         username: email,
@@ -38,7 +50,14 @@ function Login() {
         toast.error("Failed to login");
       }
     } catch (error) {
-      toast.error(error.response.data.Message);
+      setLoginAttempts((prevAttempts) => prevAttempts + 1);
+      if (loginAttempts + 1 < 4) {
+        toast.error(error.response.data.Message);
+      }
+      if (loginAttempts + 1 > 3) {
+        toast.error("Your account has been suspended. Please contact support.");
+        sessionStorage.setItem(`acct-${email}`.toLowerCase(), true);
+      }
       setLoading(false);
     }
     setLoading(false);
